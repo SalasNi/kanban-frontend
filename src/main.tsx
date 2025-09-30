@@ -10,11 +10,12 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 import './styles.css'
-import reportWebVitals from './reportWebVitals.ts'
+import reportWebVitals from './report-web-vitals.ts'
 
-import App from './App.tsx'
+import App from './app.tsx'
+import { BoardRoutes } from './modules/Boards/boards.routes.tsx'
 
-const rootRoute = createRootRoute({
+export const rootRoute = createRootRoute({
   component: () => (
     <>
       <Outlet />
@@ -29,7 +30,11 @@ const indexRoute = createRoute({
   component: App,
 })
 
-const routeTree = rootRoute.addChildren([indexRoute])
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  ...BoardRoutes
+])
+
 
 const router = createRouter({
   routeTree,
