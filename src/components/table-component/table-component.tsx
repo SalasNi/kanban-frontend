@@ -13,8 +13,6 @@ interface TableProps {
 }
 
 export function TableComponent(props: TableProps) {
-
-
   return (
      <div className="overflow-hidden rounded-md border">
       <Table>

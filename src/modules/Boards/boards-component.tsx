@@ -4,8 +4,10 @@ import { TableComponent } from "@/components/table-component/table-component";
 export function BoardsComponent() {
   return (
     <div>
-      <h1> Boards </h1>
-      <TableComponent data={[]}/>
+      <p className="text-4xl"> Boards </p>
+      <div className="pt-8">
+        <TableComponent data={[]}/>
+      </div>
     </div>
   )
 }
