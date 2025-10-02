@@ -1,12 +1,12 @@
 import { rootRoute } from "@/main";
 import { createRoute } from "@tanstack/react-router";
-import { BoardsComponent } from "./boards-component";
+import { BoardComponent } from "./board-component";
 
 
 const BoardIndex = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/boards',
-  component: BoardsComponent,
+  path: '/board',
+  component: BoardComponent,
 })
 
 

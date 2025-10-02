@@ -12,7 +12,7 @@ export function DashboardSidebar() {
             <SidebarMenu>
               <SidebarMenuItem key={1}>
                 <SidebarMenuButton asChild>
-                  <Link to="/boards">
+                  <Link to="/board">
                     Boards
                   </Link>
                 </SidebarMenuButton>

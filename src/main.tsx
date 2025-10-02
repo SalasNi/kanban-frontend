@@ -1,20 +1,23 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  Outlet,
   RouterProvider,
   createRootRoute,
   createRoute,
   createRouter,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 import './styles.css'
 import reportWebVitals from './report-web-vitals.ts'
 
-import App from './app.tsx'
-import { BoardRoutes } from './modules/Boards/boards.routes.tsx'
+import { BoardRoutes } from './modules/board/board.routes.tsx'
 import { Dashboard } from './layout/dashboard.tsx'
+import axios from 'axios'
 
 export const rootRoute = createRootRoute({
   component: Dashboard
@@ -47,12 +50,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+const queryClient = new QueryClient()
+
+
 const rootElement = document.getElementById('app')
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </StrictMode>,
   )
 }
