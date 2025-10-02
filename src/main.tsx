@@ -14,20 +14,16 @@ import reportWebVitals from './report-web-vitals.ts'
 
 import App from './app.tsx'
 import { BoardRoutes } from './modules/Boards/boards.routes.tsx'
+import { Dashboard } from './layout/dashboard.tsx'
 
 export const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: Dashboard
 })
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: App,
+  component: () => <div> hello </div>,
 })
 
 const routeTree = rootRoute.addChildren([
