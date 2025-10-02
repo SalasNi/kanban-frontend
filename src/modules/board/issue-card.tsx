@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
+import { GripVertical } from "lucide-react"
 
 interface IssueCardProps {
   id: number,
@@ -14,7 +15,11 @@ export function IssueCard({
   return(
     <Card key={id}>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex">
+          <a href="#"> 
+          <GripVertical />
+        </a>{title}
+        </CardTitle>
       </CardHeader>
       {/*<CardContent>
         <p>Card Content</p>
