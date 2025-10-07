@@ -5,6 +5,9 @@ import { UserMenu } from "./user-menu";
 export interface NavbarProps {
   title: string;
   items: NavbarItem[];
+  height: number;
+  setMenuOpen: (value: boolean) => void;
+  menuStatus: boolean;
 }
 
 export interface NavbarItem {
@@ -13,11 +16,18 @@ export interface NavbarItem {
   icon: React.ComponentType<LucideProps>;
 }
 
-export function Navbar({ title, items }: NavbarProps) {
+export function Navbar({ title, items, height, setMenuOpen, menuStatus }: NavbarProps) {
   return (
-    <div className="w-full border h-16 p-4 justify-between flex items-center">
+    <div
+      className={`w-full border h-${height} p-4 justify-between flex items-center fixed`}
+    >
       <div className="flex">
-        <Button variant="ghost" size="icon" className="mr-4">
+        <Button
+          onClick={() => setMenuOpen(!menuStatus)}
+          variant="ghost"
+          size="icon"
+          className="mr-4"
+        >
           <Menu />
         </Button>
         <h1 className="text-2xl font-bold">{title}</h1>

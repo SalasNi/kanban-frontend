@@ -1,4 +1,4 @@
-import { MenuItem } from "@/components/sidebar/menu-item";
+import { MenuItem } from "@/components/sidebar-component/menu-item";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -34,7 +34,8 @@ import {
 import { useState } from "react";
 
 interface DashBoardSidebarProps {
-  setOpened: void;
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  marginTop: number;
 }
 
 async function fetchBoards(): Promise<Board[]> {
@@ -42,7 +43,7 @@ async function fetchBoards(): Promise<Board[]> {
   return res.data;
 }
 
-export function DashboardSidebar() {
+export function DashboardSidebar({ marginTop = 16 }: DashBoardSidebarProps) {
   const { data, status } = useQuery({
     queryKey: ["board"],
     queryFn: fetchBoards,
@@ -53,7 +54,7 @@ export function DashboardSidebar() {
   const [currentValue, setCurrentValue] = useState<Board>();
 
   return (
-    <Sidebar className="min-w-0">
+    <Sidebar className={`mt-${marginTop}`}>
       <SidebarContent>
         <SidebarGroup>
           <div className="flex">
@@ -114,5 +115,5 @@ export function DashboardSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

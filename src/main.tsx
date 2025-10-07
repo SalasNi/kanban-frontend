@@ -14,7 +14,7 @@ import reportWebVitals from "./report-web-vitals.ts";
 
 import { BoardRoutes } from "./modules/board/board.routes.tsx";
 import { Dashboard } from "./layout/dashboard.tsx";
-import axios from "axios";
+
 
 export const rootRoute = createRootRoute({
   component: Dashboard,
