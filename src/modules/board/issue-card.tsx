@@ -1,24 +1,20 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import { GripVertical } from "lucide-react"
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { GripVertical } from "lucide-react";
 
 interface IssueCardProps {
-  id: number,
-  title: string
+  id: number;
+  title: string;
 }
 
-
-export function IssueCard({
-  id,
-  title
-}: IssueCardProps){
-
-  return(
+export function IssueCard({ id, title }: IssueCardProps) {
+  return (
     <Card key={id}>
       <CardHeader>
         <CardTitle className="flex">
-          <a href="#"> 
-          <GripVertical />
-        </a>{title}
+          <a href="#">
+            <GripVertical />
+          </a>
+          {title}
         </CardTitle>
       </CardHeader>
       {/*<CardContent>
@@ -29,5 +25,5 @@ export function IssueCard({
       </CardFooter>
       */}
     </Card>
-  )
+  );
 }
