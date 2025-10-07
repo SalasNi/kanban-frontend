@@ -29,7 +29,7 @@ export function Dashboard() {
 
       {/* Main content */}
       <div className="p-4 md:p-8">
-        <div className="ml-64 pt-16">
+        <div className={`ml-64 pt-${navbarHeight}`}>
           <Outlet />
         </div>
       </div>

@@ -8,7 +8,7 @@ interface IssueCardProps {
 
 export function IssueCard({ id, title }: IssueCardProps) {
   return (
-    <Card key={id}>
+    <Card key={id} className="rounded-md shadow-neutral-100">
       <CardHeader>
         <CardTitle className="flex">
           <a href="#">

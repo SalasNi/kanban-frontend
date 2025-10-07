@@ -20,7 +20,7 @@ export function BoardColumn({ id, title, issues }: BoardColumnProps) {
   return (
     <div
       key={id}
-      className="p-2 rounded-lg bg-gray-100 w-96 flex-shrink-0 shadow"
+      className="p-2 rounded-lg bg-gray-100 w-64 flex-shrink-0 shadow h-120 overflow-y-auto"
     >
       <div className="pt-4 pb-6 pl-1 flex">
         <a href="#">
@@ -31,7 +31,7 @@ export function BoardColumn({ id, title, issues }: BoardColumnProps) {
       </div>
 
       {/* Issues container */}
-      <div className="">
+      <div className="space-y-2">
         {issues.map((issue) => (
           <IssueCard id={issue.id} title={issue.title} />
         ))}
