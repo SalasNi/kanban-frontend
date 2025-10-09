@@ -1,11 +1,11 @@
 import { HttpClient } from "@/lib/http-client";
 import { useQuery } from "@tanstack/react-query";
-import { data } from "./data-fake";
 import { BoardColumn } from "./board-column";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Input } from "@/components/ui/input";
 import { Settings, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Column } from "@/models/column";
 
 interface BoardComponentProps {
   id: number;
@@ -13,10 +13,10 @@ interface BoardComponentProps {
 }
 
 export function BoardComponent({ id, name = "Board" }: BoardComponentProps) {
-  const BoardQuery = useQuery({
+  const { data } = useQuery<Column[]>({
     queryKey: ["board"],
     queryFn: async () => {
-      const res = await HttpClient.get("/board");
+      const res = await HttpClient.get(`/board/${id}/columns`);
       return res.data;
     },
   });
@@ -26,9 +26,7 @@ export function BoardComponent({ id, name = "Board" }: BoardComponentProps) {
       <div className="flex justify-between space-x-4 w-full items-center">
         <p className="text-3xl">{name}</p>
 
-        <div className="items-center">
-
-        </div>
+        <div className="items-center"></div>
 
         <div className="items-end">
           <Button variant={"ghost"} size={"icon"}>
@@ -46,7 +44,7 @@ export function BoardComponent({ id, name = "Board" }: BoardComponentProps) {
       <ScrollArea className="overflow-x-auto w-full">
         <div className="pt-8">
           <div className="flex space-x-4">
-            {data.map((d) => (
+            {data?.map((d) => (
               <BoardColumn id={d.id} title={d.title} issues={d.issues} />
             ))}
           </div>

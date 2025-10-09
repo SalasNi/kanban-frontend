@@ -5,7 +5,6 @@ import { UserMenu } from "./user-menu";
 export interface NavbarProps {
   title: string;
   items: NavbarItem[];
-  height: number;
   setMenuOpen: (value: boolean) => void;
   menuStatus: boolean;
 }
@@ -16,10 +15,10 @@ export interface NavbarItem {
   icon: React.ComponentType<LucideProps>;
 }
 
-export function Navbar({ title, items, height, setMenuOpen, menuStatus }: NavbarProps) {
+export function Navbar({ title, items, setMenuOpen, menuStatus }: NavbarProps) {
   return (
     <div
-      className={`w-full border h-${height} p-4 justify-between flex items-center fixed`}
+      className={`w-full border h-16 p-4 justify-between flex items-center fixed`}
     >
       <div className="flex">
         <Button
